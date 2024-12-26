@@ -1,0 +1,39 @@
+<div class="container">
+<div class="filter-container">
+    <label for="category">Category:</label>
+    <select id="category" [(ngModel)]="categoryid">
+      <option *ngFor="let cat of list" [value]="cat.id">{{cat.name}}</option>
+    </select><br>
+  
+    <label for="minPrice">Minimum Price:</label>
+    <input id="minPrice" type="text" [(ngModel)]="minPrice"><br>
+  
+    <label for="maxPrice">Maximum Price:</label>
+    <input id="maxPrice" type="text" [(ngModel)]="maxPrice"><br>
+  
+    <label for="minRating">Minimum Rating:</label>
+    <input id="minRating" type="text" [(ngModel)]="minRating"><br>
+  
+    <button (click)="load()">Load</button>
+  </div>
+  
+  <div class="product-grid" *ngIf="list2.length">
+    <div class="product-card" *ngFor="let item of list2; let i = index">
+      <h3>{{item.name}}</h3>
+      <p><strong>Price:</strong> {{item.price}}</p>
+      <p><strong>Rating:</strong> {{item.rating}}</p>
+      <p><strong>Discount:</strong> {{item.discount}}</p>
+      <p><strong>Description:</strong> {{item.description}}</p>
+      <p>
+        <strong>Availability:</strong>
+        <ng-container *ngIf="item.quantity == 0">No Stock Available</ng-container>
+        <ng-container *ngIf="item.quantity > 0 && item.quantity <= 2">Limited Stock Available</ng-container>
+        <ng-container *ngIf="item.quantity > 5">Stock Available</ng-container>
+      </p>
+      <button class="add-to-cart" (click)="addTocart(item.id)">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+
+

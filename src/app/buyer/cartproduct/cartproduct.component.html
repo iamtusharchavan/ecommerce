@@ -1,0 +1,27 @@
+<div>
+    <table border="1">
+        <tr>
+            <th>Sr.No</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Discount</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let item of list; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.discount}}</td>
+            <td><input type="number" #inputTitle [value]="item.quant" (change)="cartassign(i, inputTitle.value)"></td>
+            <td>{{item.amount}}</td>
+            <td><button class="delete" (click)="deleteProd(item.productid)">Delete</button></td>
+            <td>{{item.productid}}</td>
+        </tr>
+    </table>
+    <p class="total-amount">Total Amount: {{total}}</p>
+    <button class="buy-product" (click)="buyPod()">Buy Product</button>
+</div>

@@ -1,0 +1,51 @@
+<div>
+  <h2>Products</h2>
+  <table border="1px">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Discount</th>
+        <th>Rating</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of list">
+        <td data-label="ID">{{ product.id }}</td>
+        <td data-label="Name">{{ product.name }}</td>
+        <td data-label="Price">{{ product.price }}</td>
+        <td data-label="Quantity">{{ product.quantity }}</td>
+        <td data-label="Description">{{ product.description }}</td>
+        <td data-label="Discount">{{ product.discount }}</td>
+        <td data-label="Rating">{{ product.rating }}</td>
+        <td data-label="Category">{{ product.catName }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Add New Product</h2>
+  <form (submit)="addProduct()">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="name" name="name" type="text"> 
+    <label for="price">Price:</label>
+    <input id="price" [(ngModel)]="price" name="price" type="number">
+    <label for="quantity">Quantity:</label>
+    <input id="quantity" [(ngModel)]="quantity" name="quantity" type="number">
+    <label for="description">Description:</label>
+    <input id="description" [(ngModel)]="description" name="description" type="text">
+    <label for="discount">Discount:</label>
+    <input id="discount" [(ngModel)]="discount" name="discount" type="number">
+    <label for="rating">Rating:</label>
+    <input id="rating" [(ngModel)]="rating" name="rating" type="number">
+    <label for="category">Category:</label>
+    <select id="category" [(ngModel)]="catid" name="category">
+      <option *ngFor="let category of list2" [value]="category.id">{{ category.name }}</option>
+    </select>
+    <br>
+    <button id="addProduct" type="submit" disabled="true">Add Product</button>
+  </form>
+</div>
